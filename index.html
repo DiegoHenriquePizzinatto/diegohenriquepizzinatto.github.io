@@ -9,7 +9,7 @@
 </head>
 <body class="dark-mode">
 
-  <button id="theme-toggle" title="Alternar Tema">🌗 </button>
+  <!--button id="theme-toggle" title="Alternar Tema">🌗 </button-->
 
   <section class="glass-card fade-section" id="sobre">
     <h1>Sobre</h1>
@@ -35,32 +35,31 @@
     <div class="skills">
       <span>PHP</span>
       <span>JavaScript</span>
-      <span>Python</span>
+      <span>Python (estudando)</span>
       <span>MySQL</span>
       <span>VBA</span>
-      <span>React</span>
     </div>
   </section>
 
   <section class="glass-card fade-section" id="portfolio">
     <h1>Portfólio</h1>
     <div class="portfolio-grid">
-      <div class="portfolio-item">Projeto 1</div>
-      <div class="portfolio-item">Projeto 2</div>
-      <div class="portfolio-item">Projeto 3</div>
+      <div class="portfolio-item">Site Taxi RC</div>
+      <div class="portfolio-item">Site Vereador Willian Bento (Campanha 2012) </div>
+      <div class="portfolio-item">Site Led Show</div>
     </div>
   </section>
 
   <section class="glass-card fade-section" id="contato">
     <h1>Contato</h1>
     <p>Email: pizzidh@pizzinetwork.net</p>
-    <a href="https://github.com/SeuGithub" target="_blank" class="btn-link">🌐 Meu GitHub</a>
+    <a href="https://github.com/DiegoHenriquePizzinatto" target="_blank" class="btn-link">🌐 Meu GitHub</a>
   </section>
 
   <script>
     const birthYear = 1988;
     const currentYear = new Date().getFullYear();
-    document.getElementById('idade').innerText = currentYear - birthYear;
+    document.getElementById('idade').innerText = (currentYear - birthYear) - 1;
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
