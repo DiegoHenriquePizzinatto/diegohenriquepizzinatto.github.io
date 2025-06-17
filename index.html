@@ -1,8 +1,115 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil - Diego Henrique Pizzinatto</title>
+  <link rel="stylesheet" href="main.css">
 </head>
-<body>
+<body class="dark-mode">
 
-     Teste
+  <button id="theme-toggle" title="Alternar Tema">🌗 </button>
+
+  <section class="glass-card fade-section" id="sobre">
+    <h1>Sobre</h1>
+    <img src="foto.png" alt="Foto Diego" class="foto-holograma" />
+    <p><strong>Diego Henrique Pizzinatto</strong>, idade: <span id="idade"></span></p>
+    <p>É um profissional de tecnologia prático, curioso e focado em soluções. Demonstra interesse constante por automação de processos, seja com RPA, batch scripts, VBA ou PHP puro.</p>
+    <p>Tem perfil técnico voltado para desenvolvimento web e automação, com PHP, MySQL, JavaScript, Python e React.</p>
+    <p>É analítico e detalhista: se preocupa com funcionamento real das coisas, busca entender o "porquê" dos problemas.</p>
+    <p>Desde 2008 no setor de informática.</p>
+  </section>
+
+  <section class="glass-card fade-section" id="trajetoria">
+    <h1>Trajetória</h1>
+    <ul>
+      <li>🖥️ 2008-2012: Programador em Visual Basic (Macros Excel)</li>
+      <li>🖥️ 2012-Atual: Fundador da Pizzi Network Consulting IT</li>
+      <li>🖥️ 2021-Atual: Analista de Sistemas na Brascabos (Datasul, Progress 4GL, PHP, VBA, JS)</li>
+    </ul>
+  </section>
+
+  <section class="glass-card fade-section" id="habilidades">
+    <h1>Habilidades</h1>
+    <div class="skills">
+      <span>PHP</span>
+      <span>JavaScript</span>
+      <span>Python</span>
+      <span>MySQL</span>
+      <span>VBA</span>
+      <span>React</span>
+    </div>
+  </section>
+
+  <section class="glass-card fade-section" id="portfolio">
+    <h1>Portfólio</h1>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">Projeto 1</div>
+      <div class="portfolio-item">Projeto 2</div>
+      <div class="portfolio-item">Projeto 3</div>
+    </div>
+  </section>
+
+  <section class="glass-card fade-section" id="contato">
+    <h1>Contato</h1>
+    <p>Email: pizzidh@pizzinetwork.net</p>
+    <a href="https://github.com/SeuGithub" target="_blank" class="btn-link">🌐 Meu GitHub</a>
+  </section>
+
+  <script>
+    const birthYear = 1988;
+    const currentYear = new Date().getFullYear();
+    document.getElementById('idade').innerText = currentYear - birthYear;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.fade-section').forEach(section => observer.observe(section));
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+
+<section class="glass-card fade-section" id="repositorios">
+  <h1>Repositórios Públicos no GitHub</h1>
+  <ul id="repo-list">Carregando repositórios...</ul>
+</section>
+
+<script>
+async function carregarRepositorios() {
+  try {
+    const response = await fetch('https://api.github.com/users/DiegoHenriquePizzinatto/repos');
+    const repos = await response.json();
+    const lista = document.getElementById('repo-list');
+    lista.innerHTML = '';
+    repos.forEach(repo => {
+      const item = document.createElement('li');
+      item.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a> - ${repo.description || 'Sem descrição'}`;
+      lista.appendChild(item);
+    });
+  } catch (error) {
+    document.getElementById('repo-list').innerText = 'Erro ao carregar repositórios.';
+  }
+}
+carregarRepositorios();
+</script>
 </body>
+
 </html>
