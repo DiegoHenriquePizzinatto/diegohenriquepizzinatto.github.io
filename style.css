@@ -1,0 +1,114 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.5s, color 0.5s;
+}
+.dark-mode {
+  background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+  color: white;
+}
+.light-mode {
+  background: linear-gradient(135deg, #e0e0e0, #ffffff);
+  color: black;
+}
+button#theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #00ffcc;
+  color: black;
+  font-weight: bold;
+}
+.glass-card {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 900px;
+  width: 90%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.foto-holograma {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 255, 204, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.7);
+  animation: girarY 10s infinite linear;
+  display: block;
+  margin: 20px auto;
+  object-fit: cover;
+}
+@keyframes girarY {
+  0%   { transform: rotateY(0deg); }
+  50%  { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}
+ul {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+li {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+.skills span {
+  display: inline-block;
+  background: rgba(0,255,204,0.3);
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.skills span:hover {
+  background: rgba(0,255,204,0.6);
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+.portfolio-item {
+  background: rgba(255,255,255,0.2);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s, background 0.3s;
+}
+.portfolio-item:hover {
+  transform: translateY(-10px);
+  background: rgba(0,255,204,0.2);
+}
+.btn-link {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #00ffcc;
+  color: black;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+@media (max-width: 600px) {
+  .foto-holograma {
+    width: 120px;
+    height: 120px;
+  }
+  button#theme-toggle {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+}
